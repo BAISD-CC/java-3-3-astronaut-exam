@@ -1,0 +1,140 @@
+{
+  "schema": "iteryx/java-grader/v1",
+
+  "assignmentName": "Ch. 3 Challenge 3",
+
+  "project": {
+    "workingDirectory": ".",
+    "mainFile": "src/AstronautExam.java",
+    "mainClass": "AstronautExam",
+    "outputDirectory": ".iteryx/out",
+    "compileCommand": [
+      "javac",
+      "-d",
+      ".iteryx/out",
+      "src/AstronautExam.java"
+    ],
+    "runCommand": [
+      "java",
+      "-cp",
+      ".iteryx/out",
+      "AstronautExam"
+    ]
+  },
+
+  "settings": {
+    "compileTimeoutSeconds": 30,
+    "runTimeoutSeconds": 10,
+    "defaultCaseSensitive": false,
+    "defaultNormalizeWhitespace": true
+  },
+
+  "helpTopics": {
+    "scanner": {
+      "title": "Scanner Input",
+      "whereToLook": [
+        "Make sure you created a Scanner object using System.in.",
+        "Read the number of tasks completed with nextInt() and store it in your tasks variable.",
+        "Print the prompt text exactly as shown in the README before reading the input."
+      ]
+    },
+    "conditionals": {
+      "title": "Conditional Statements (if / else if)",
+      "whereToLook": [
+        "Use if / else if statements to compare the tasks variable against each value in the scoring table.",
+        "Check the boundaries of each condition so that every value from 0 to 5 maps to the correct percentage.",
+        "Make sure the percentage you display comes from the variable your conditional logic set, not a fixed value."
+      ]
+    }
+  },
+
+  "sourceChecks": [
+    {
+      "name": "Uses Scanner",
+      "type": "regex",
+      "pattern": "\\bScanner\\b",
+      "points": 2,
+      "message": "This challenge requires you to use a Scanner to read the number of tasks completed."
+    },
+    {
+      "name": "Uses if statement",
+      "type": "regex",
+      "pattern": "\\bif\\s*\\(",
+      "points": 3,
+      "message": "This challenge requires you to use if / else if statements to determine the percentage from the number of tasks completed."
+    }
+  ],
+
+  "tests": [
+    {
+      "name": "Displays the input prompt",
+      "input": "0\n",
+      "expectedOutput": "How many tasks did the astronaut complete?",
+      "comparison": "included",
+      "points": 2,
+      "message": "Your program should print the prompt 'How many tasks did the astronaut complete?' before reading input."
+    },
+    {
+      "name": "0 tasks completed",
+      "input": "0\n",
+      "expectedOutput": "The astronaut's score is 0 percent.",
+      "comparison": "included",
+      "points": 3,
+      "message": "When 0 tasks are completed, the astronaut's score should be 0 percent. Check the condition in your if statement for 0 tasks.",
+      "possibleErrors": [
+        {
+          "type": "hardcoded_output_hint",
+          "badText": "100 percent",
+          "message": "Your output shows 100 percent even though 0 tasks were completed. Make sure your conditional logic looks at the value entered instead of always displaying the same percentage."
+        }
+      ]
+    },
+    {
+      "name": "1 task completed",
+      "input": "1\n",
+      "expectedOutput": "The astronaut's score is 10 percent.",
+      "comparison": "included",
+      "points": 3,
+      "message": "When 1 task is completed, the astronaut's score should be 10 percent. Check the condition in your if / else if chain for 1 task."
+    },
+    {
+      "name": "2 tasks completed",
+      "input": "2\n",
+      "expectedOutput": "The astronaut's score is 25 percent.",
+      "comparison": "included",
+      "points": 3,
+      "message": "When 2 tasks are completed, the astronaut's score should be 25 percent. Check the condition in your if / else if chain for 2 tasks."
+    },
+    {
+      "name": "3 tasks completed",
+      "input": "3\n",
+      "expectedOutput": "The astronaut's score is 45 percent.",
+      "comparison": "included",
+      "points": 3,
+      "message": "When 3 tasks are completed, the astronaut's score should be 45 percent. Check the condition in your if / else if chain for 3 tasks."
+    },
+    {
+      "name": "4 tasks completed",
+      "input": "4\n",
+      "expectedOutput": "The astronaut's score is 70 percent.",
+      "comparison": "included",
+      "points": 3,
+      "message": "When 4 tasks are completed, the astronaut's score should be 70 percent. Check the condition in your if / else if chain for 4 tasks."
+    },
+    {
+      "name": "5 tasks completed",
+      "input": "5\n",
+      "expectedOutput": "The astronaut's score is 100 percent.",
+      "comparison": "included",
+      "points": 3,
+      "message": "When 5 tasks are completed, the astronaut's score should be 100 percent. Check the condition in your if / else if chain for 5 tasks.",
+      "possibleErrors": [
+        {
+          "type": "hardcoded_output_hint",
+          "badText": "0 percent",
+          "message": "Your output shows 0 percent even though 5 tasks were completed. Make sure every branch of your conditional logic sets the percentage correctly."
+        }
+      ]
+    }
+  ]
+}
