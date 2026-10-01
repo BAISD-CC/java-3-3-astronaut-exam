@@ -1,8 +1,6 @@
 {
   "schema": "iteryx/java-grader/v1",
-
   "assignmentName": "Ch. 3 Challenge 3",
-
   "project": {
     "workingDirectory": ".",
     "mainFile": "src/AstronautExam.java",
@@ -21,14 +19,12 @@
       "AstronautExam"
     ]
   },
-
   "settings": {
     "compileTimeoutSeconds": 30,
     "runTimeoutSeconds": 10,
     "defaultCaseSensitive": false,
     "defaultNormalizeWhitespace": true
   },
-
   "helpTopics": {
     "scanner": {
       "title": "Scanner Input",
@@ -39,32 +35,22 @@
       ]
     },
     "conditionals": {
-      "title": "Conditional Statements (if / else if)",
+      "title": "Choosing the Percentage",
       "whereToLook": [
-        "Use if / else if statements to compare the tasks variable against each value in the scoring table.",
-        "Check the boundaries of each condition so that every value from 0 to 5 maps to the correct percentage.",
-        "Make sure the percentage you display comes from the variable your conditional logic set, not a fixed value."
+        "A switch on tasks with one case per row of the table works well; so does an if-else-if chain.",
+        "If you use a switch, end each case with break so the next case does not also run.",
+        "Make sure the percentage you display comes from the variable your decision set, not a fixed value."
+      ]
+    },
+    "validation": {
+      "title": "Rejecting an Invalid Number",
+      "whereToLook": [
+        "Only 0 through 5 are valid. Every other number prints the invalid message.",
+        "In a switch, default catches every value that no case matches.",
+        "When the number is invalid, do not print the score line."
       ]
     }
   },
-
-  "sourceChecks": [
-    {
-      "name": "Uses Scanner",
-      "type": "regex",
-      "pattern": "\\bScanner\\b",
-      "points": 2,
-      "message": "This challenge requires you to use a Scanner to read the number of tasks completed."
-    },
-    {
-      "name": "Uses if statement",
-      "type": "regex",
-      "pattern": "\\bif\\s*\\(",
-      "points": 3,
-      "message": "This challenge requires you to use if / else if statements to determine the percentage from the number of tasks completed."
-    }
-  ],
-
   "tests": [
     {
       "name": "Displays the input prompt",
@@ -111,7 +97,14 @@
       "expectedOutput": "The astronaut's score is 45 percent.",
       "comparison": "included",
       "points": 3,
-      "message": "When 3 tasks are completed, the astronaut's score should be 45 percent. Check the condition in your if / else if chain for 3 tasks."
+      "message": "When 3 tasks are completed, the astronaut's score should be 45 percent. Check the condition in your if / else if chain for 3 tasks.",
+      "possibleErrors": [
+        {
+          "type": "hardcoded_output_hint",
+          "badText": "70 percent",
+          "message": "3 tasks printed the 4-task score. If you used a switch, check that case 3 ends with break."
+        }
+      ]
     },
     {
       "name": "4 tasks completed",
@@ -133,6 +126,36 @@
           "type": "hardcoded_output_hint",
           "badText": "0 percent",
           "message": "Your output shows 0 percent even though 5 tasks were completed. Make sure every branch of your conditional logic sets the percentage correctly."
+        }
+      ]
+    },
+    {
+      "name": "Rejects a negative number",
+      "input": "-1\n",
+      "expectedOutput": "Invalid number of tasks. Enter 0 through 5.",
+      "comparison": "included",
+      "points": 3,
+      "message": "Numbers below 0 should print \"Invalid number of tasks. Enter 0 through 5.\"",
+      "possibleErrors": [
+        {
+          "type": "hardcoded_output_hint",
+          "badText": "score is",
+          "message": "Your program printed a score line for an invalid number. Print only the invalid message."
+        }
+      ]
+    },
+    {
+      "name": "Rejects a number above 5",
+      "input": "6\n",
+      "expectedOutput": "Invalid number of tasks. Enter 0 through 5.",
+      "comparison": "included",
+      "points": 3,
+      "message": "Numbers above 5 should print \"Invalid number of tasks. Enter 0 through 5.\"",
+      "possibleErrors": [
+        {
+          "type": "hardcoded_output_hint",
+          "badText": "score is",
+          "message": "Your program printed a score line for an invalid number. Print only the invalid message."
         }
       ]
     }
