@@ -9,17 +9,15 @@ public class AstronautExam {
 
         // Create a Scanner object for keyboard input.
 
-        // Get the number of tasks completed.
+        // Ask how many tasks the astronaut completed, and read the number.
 
         // Close the keyboard.
 
-        // Determine the percentage.
+        // Decide the percentage for the number of tasks,
+        // or report that the number is not valid.
 
-        // Display the percentage.
+        // Display the result.
 
-        // Close the application.
-        
     }
 
 }
-
